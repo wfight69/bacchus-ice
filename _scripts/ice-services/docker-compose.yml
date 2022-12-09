@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  eop-portal-web:
+    image: registry-dev.cnsamc.com/eop-portal-web
+    container_name: eop-portal-web
+    networks:
+      - cnsamc
+    ports:
+      - "8080:80"
+
+networks:
+  cnsamc:
+    external:
+      name: ice-network
