@@ -41,11 +41,11 @@ public class RetailShop extends AuditableEntity implements Refinable {
     //전일채권
     // Long currentBondAmount;
     //회사(명, 전화번호, 팩스, 이메일)
-    Contact contact;
+    Contact companyContact;
     //소매점대표자(명, 전화번호, 팩스, 이메일)
-    Contact reprsContact;
+    Contact ceoContact;
     //소매점담당자(명, 전화번호, 팩스, 이메일)
-    Contact chargeContact;
+    Contact managerContact;
     //라이센스번호
     String licenseNo;
     // 업태

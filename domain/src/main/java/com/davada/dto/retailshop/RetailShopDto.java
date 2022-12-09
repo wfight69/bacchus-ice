@@ -23,9 +23,9 @@ public class RetailShopDto {
     CompanyType companyType;
     IndustryType industryType;
     Long bondLimitAmount;
-    Contact contact;
-    Contact reprsContact;
-    Contact chargeContact;
+    Contact companyContact;
+    Contact ceoContact;
+    Contact managerContact;
     String licenseNo;
     String uptae;
     String jongmok;

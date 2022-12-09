@@ -1,5 +1,6 @@
 package com.davada.application.wholesaler.service;
 
+
 import com.davada.application.wholesaler.persistence.WholesalerPersistenceAdapter;
 import com.davada.application.wholesaler.service.port.WholesalerCrudUseCase;
 import com.davada.domain.common.NameValuePairs;
@@ -20,31 +21,34 @@ import java.util.List;
 @ApplicationScoped
 @RequiredArgsConstructor
 public class WholesalerCrudService implements WholesalerCrudUseCase {
-
-    private final WholesalerPersistenceAdapter wholesalerPersistenceAdapter;
+    private final WholesalerPersistenceAdapter wholesalerCrudPort;
+    private final WholesalerDomainMapper wholesalerDomainMapper;
 
     @Override
     public IdValue createWholesaler(Wholesaler wholesaler) {
         String wholesalerUuid = ErpId.newId().getUuid().toString();
+        // wholesalerDomainMapper.toDomain(wholesalerUuid, command)
         wholesaler.setWholesalerUuid(wholesalerUuid);
-        wholesalerPersistenceAdapter.create(wholesaler);
+        //
+        wholesalerCrudPort.create(wholesaler);
         return new IdValue("wholesalerUuid", wholesalerUuid);
     }
+
     @Override
     public Wholesaler retrieveWholesaler(String wholesalerUuid) {
-        return wholesalerPersistenceAdapter.retrieve(wholesalerUuid)
+        return wholesalerCrudPort.retrieve(wholesalerUuid)
                 .orElseThrow(() -> new ErpRuntimeException(WholesalerErrorCodes.WHOLESALER_1000, wholesalerUuid));
     }
 
     @Override
     public List<Wholesaler> retrieveAllWholesaler() {
-        return wholesalerPersistenceAdapter.retrieveAllWholesaler();
+        return wholesalerCrudPort.retrieveAllWholesaler();
     }
 
     @Override
     public BooleanValue updateWholesaler(String wholesalerUuid, NameValuePairs nameValuePairs) {
-        return wholesalerPersistenceAdapter.retrieve(wholesalerUuid).map(workplace -> {
-            boolean modified = wholesalerPersistenceAdapter.update(wholesalerUuid, nameValuePairs);
+        return wholesalerCrudPort.retrieve(wholesalerUuid).map(workplace -> {
+            boolean modified = wholesalerCrudPort.update(wholesalerUuid, nameValuePairs);
             if (modified) {
                 // domainEventPublisher.publish(new WorkplaceRemovedEvent(workplace, permanent));
             }
@@ -54,8 +58,8 @@ public class WholesalerCrudService implements WholesalerCrudUseCase {
 
     @Override
     public BooleanValue deleteWholesaler(String wholesalerUuid, boolean permanent) {
-        return wholesalerPersistenceAdapter.retrieve(wholesalerUuid).map(workplace -> {
-            boolean removed = wholesalerPersistenceAdapter.delete(workplace, permanent);
+        return wholesalerCrudPort.retrieve(wholesalerUuid).map(workplace -> {
+            boolean removed = wholesalerCrudPort.delete(workplace, permanent);
             if (removed) {
                 // domainEventPublisher.publish(new WorkplaceRemovedEvent(workplace, permanent));
             }

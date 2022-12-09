@@ -1,10 +1,11 @@
-package com.davada.domain.wholesaler.entity;
+package com.davada.domain.icesaler.entity;
 
 import com.davada.domain.common.AuditableEntity;
 import com.davada.domain.common.vo.CompanyType;
 import com.davada.domain.common.vo.Contact;
 import com.davada.domain.common.vo.IndustryType;
-import com.davada.domain.wholesaler.vo.*;
+import com.davada.domain.icesaler.vo.IcesalerStatus;
+import com.davada.domain.wholesaler.vo.Location;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
@@ -13,17 +14,14 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Wholesaler extends AuditableEntity {
-    // 주류도매업체 UUID
-    String wholesalerUuid;
+public class Icesaler extends AuditableEntity {
     // 냉장업체 UUID
-    @NotBlank(message = "냉장업체는 필수 선택입니다.")
     String icesalerUuid;
     // 업체코드
-    @NotBlank(message = "주류도매코드는 필수 입력입니다.")
-    String wholesalerCode;
+    @NotBlank(message = "냉장업체코드는 필수 입력입니다.")
+    String icesalerCode;
     // 업체명
-    String wholesalerName;
+    String icesalerName;
     // 회사 주소
     Location location;
     // 사업자번호
@@ -49,13 +47,7 @@ public class Wholesaler extends AuditableEntity {
     // 서비스 월정 금액
     Integer serviceMonthlyAmount;
     // 서비스상태
-    WholesalerStatus wholesalerStatus;
+    IcesalerStatus icesalerStatus;
     // 비고
     String remarks;
-    // 밴
-    Van van;
-    // 음성(Ars)
-    Ars ars;
-    // 모바일주문
-    Mobile mobile;
 }

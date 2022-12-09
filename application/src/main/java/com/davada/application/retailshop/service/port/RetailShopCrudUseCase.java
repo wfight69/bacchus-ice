@@ -34,6 +34,7 @@ public interface RetailShopCrudUseCase {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public class CreateRetailShopCommand {
         String wholesalerUuid;
+        String icesalerUuid;
         String retailShopCode;
         String retailShopName;
         String businessNumber;
@@ -42,9 +43,9 @@ public interface RetailShopCrudUseCase {
         CompanyType companyType;
         IndustryType industryType;
         Long bondLimitAmount;
-        Contact contact;
-        Contact reprsContact;
-        Contact chargeContact;
+        Contact companyContact;
+        Contact ceoContact;
+        Contact managerContact;
         String licenseNo;
         String uptae;
         String jongmok;

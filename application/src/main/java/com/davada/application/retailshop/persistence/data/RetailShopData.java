@@ -46,41 +46,41 @@ public class RetailShopData {
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name",
-                    column = @Column(name = "retail_shop_sub_name")),
+                    column = @Column(name = "company_name")),
             @AttributeOverride(name = "telephone",
-                    column = @Column(name = "retail_shop_telephone")),
+                    column = @Column(name = "company_telephone")),
             @AttributeOverride(name = "fax",
-                    column = @Column(name = "retail_shop_fax")),
+                    column = @Column(name = "company_fax")),
             @AttributeOverride(name = "email",
-                    column = @Column(name = "retail_shop_email")),
+                    column = @Column(name = "company_email")),
     })
-    private ContactData contact; // FIXME: companyContact
+    private ContactData companyContact; // FIXME: companyContact
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name",
-                    column = @Column(name = "reprs_name")),
+                    column = @Column(name = "ceo_name")),
             @AttributeOverride(name = "telephone",
-                    column = @Column(name = "reprs_telephone")),
+                    column = @Column(name = "ceo_telephone")),
             @AttributeOverride(name = "fax",
-                    column = @Column(name = "reprs_fax")),
+                    column = @Column(name = "ceo_fax")),
             @AttributeOverride(name = "email",
-                    column = @Column(name = "reprs_email")),
+                    column = @Column(name = "ceo_email")),
     })
-    private ContactData reprsContact; // FIXME: ceoContact
+    private ContactData ceoContact; // FIXME: ceoContact
 
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "name",
-                    column = @Column(name = "charge_name")),
+                    column = @Column(name = "manager_name")),
             @AttributeOverride(name = "telephone",
-                    column = @Column(name = "charge_telephone")),
+                    column = @Column(name = "manager_telephone")),
             @AttributeOverride(name = "fax",
-                    column = @Column(name = "charge_fax")),
+                    column = @Column(name = "manager_fax")),
             @AttributeOverride(name = "email",
-                    column = @Column(name = "charge_email")),
+                    column = @Column(name = "manager_email")),
     })
-    private ContactData chargeContact; // FIXME: managerContact
+    private ContactData managerContact; // FIXME: managerContact
     private String licenseNo;
     private String uptae;
     private String jongmok;
@@ -120,11 +120,11 @@ public class RetailShopData {
                     value -> this.industryType = IndustryType.valueOf(value));
             nameValuePairs.pullOut("bondLimitAmount",
                     value -> this.bondLimitAmount = Long.valueOf(value));
-            nameValuePairs.pullOut("contact",
-                    value -> this.contact = jpaMapper.toContactData(fromJson(value, Contact.class)));
-            nameValuePairs.pullOut("reprsContact", value -> this.reprsContact =
+            nameValuePairs.pullOut("companyContact",
+                    value -> this.companyContact = jpaMapper.toContactData(fromJson(value, Contact.class)));
+            nameValuePairs.pullOut("ceoContact", value -> this.ceoContact =
                     jpaMapper.toContactData(JsonHelper.fromJson(value, Contact.class)));
-            nameValuePairs.pullOut("chargeContact", value -> this.chargeContact =
+            nameValuePairs.pullOut("managerContact", value -> this.managerContact =
                     jpaMapper.toContactData(JsonHelper.fromJson(value, Contact.class)));
             nameValuePairs.pullOut("licenseNo",
                     value -> this.licenseNo = trim(value));

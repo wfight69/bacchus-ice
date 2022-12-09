@@ -1,15 +1,16 @@
-package com.davada.application.wholesaler.persistence.data;
+package com.davada.application.icesaler.persistence.data;
 
 import com.davada.application.common.persistence.data.AuditLogData;
 import com.davada.application.common.persistence.data.ContactData;
 import com.davada.application.common.persistence.data.LocationData;
-import com.davada.application.wholesaler.persistence.WholesalerDataMapper;
+import com.davada.application.icesaler.persistence.IcesalerDataMapper;
 import com.davada.domain.common.NameValuePairs;
 import com.davada.domain.common.exception.ErpCannotModifyPropertyException;
 import com.davada.domain.common.util.JsonHelper;
 import com.davada.domain.common.vo.CompanyType;
 import com.davada.domain.common.vo.Contact;
 import com.davada.domain.common.vo.IndustryType;
+import com.davada.domain.icesaler.vo.IcesalerStatus;
 import com.davada.domain.wholesaler.vo.*;
 import lombok.*;
 
@@ -23,13 +24,12 @@ import static com.davada.domain.common.util.StringHelper.trim;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Table(name = "wholesaler")
-public class WholesalerData {
+@Table(name = "icesaler")
+public class IcesalerData {
     @Id
-    private String wholesalerUuid;
     private String icesalerUuid;
-    private String wholesalerCode;
-    private String wholesalerName;
+    private String icesalerCode;
+    private String icesalerName;
     @Embedded
     private LocationData location;
     private String businessNumber;
@@ -51,7 +51,7 @@ public class WholesalerData {
             @AttributeOverride(name = "email",
                     column = @Column(name = "company_email")),
     })
-    private ContactData companyContact; // FIXME: companyContact
+    private ContactData companyContact; 
 
     @Embedded
     @AttributeOverrides({
@@ -83,30 +83,21 @@ public class WholesalerData {
 
     // 서비스상태
     @Enumerated(EnumType.STRING)
-    private WholesalerStatus wholesalerStatus;
+    private IcesalerStatus icesalerStatus;
 
     // 비고
     private String remarks;
-
-    @Embedded
-    private VanData van;
-
-    @Embedded
-    private ArsData ars;
-
-    @Embedded
-    private MobileData mobile;
 
     @Embedded
     private AuditLogData auditLog;
     @Version
     private Long version;
 
-    public boolean updateValues(NameValuePairs nameValuePairs, WholesalerDataMapper jpaMapper) {
+    public boolean updateValues(NameValuePairs nameValuePairs, IcesalerDataMapper jpaMapper) {
         boolean dirty = false;
         if (!nameValuePairs.isEmpty()) {
-            nameValuePairs.pullOut("wholesalerCode", value -> this.wholesalerCode = trim(value));
-            nameValuePairs.pullOut("wholesalerName", value -> this.wholesalerName = trim(value));
+            nameValuePairs.pullOut("icesalerCode", value -> this.icesalerCode = trim(value));
+            nameValuePairs.pullOut("icesalerName", value -> this.icesalerName = trim(value));
             nameValuePairs.pullOut("location", value -> this.location =
                     jpaMapper.toLocationData(JsonHelper.fromJson(value, Location.class)));
             nameValuePairs.pullOut("businessNumber", value -> this.businessNumber = trim(value));
@@ -123,14 +114,8 @@ public class WholesalerData {
                     jpaMapper.toContactData(JsonHelper.fromJson(value, Contact.class)));
             nameValuePairs.pullOut("serviceStartDate", value -> this.serviceStartDate = trim(value));
             nameValuePairs.pullOut("serviceMonthlyAmount", value -> this.serviceMonthlyAmount = Integer.valueOf(value));
-            nameValuePairs.pullOut("wholesalerStatus", value -> this.wholesalerStatus = WholesalerStatus.valueOf(value));
+            nameValuePairs.pullOut("icesalerStatus", value -> this.icesalerStatus = IcesalerStatus.valueOf(value));
             nameValuePairs.pullOut("remarks", value -> this.remarks = trim(value));
-            nameValuePairs.pullOut("van", value -> this.van =
-                    jpaMapper.toVanData(JsonHelper.fromJson(value, Van.class)));
-            nameValuePairs.pullOut("ars", value -> this.ars =
-                    jpaMapper.toArsData(JsonHelper.fromJson(value, Ars.class)));
-            nameValuePairs.pullOut("mobile", value -> this.mobile =
-                    jpaMapper.toMobileData(JsonHelper.fromJson(value, Mobile.class)));
 
             final List<String> unmodifiedProperties = nameValuePairs.extractNames();
             if (!unmodifiedProperties.isEmpty()) {

@@ -63,7 +63,7 @@ public class EmployeeCrudService implements EmployeeCrudUseCase {
         Wholesaler wholesaler = wholesalerPersistenceAdapter.retrieve(employee.getWholesalerUuid())
                 .orElseThrow(() -> new ErpRuntimeException(WholesalerErrorCodes.WHOLESALER_1000, employee.getWholesalerUuid()));
 
-        return employeeDtoMapper.toEmployeeDto(employee, wholesaler.getContact());
+        return employeeDtoMapper.toEmployeeDto(employee, wholesaler.getCompanyContact());
     }
 
     @Override
@@ -74,7 +74,7 @@ public class EmployeeCrudService implements EmployeeCrudUseCase {
         Wholesaler wholesaler = wholesalerPersistenceAdapter.retrieve(employee.getWholesalerUuid())
                 .orElseThrow(() -> new ErpRuntimeException(WholesalerErrorCodes.WHOLESALER_1000, employee.getWholesalerUuid()));
 
-        return employeeDtoMapper.toEmployeeSimpleDto(employee, wholesaler.getContact());
+        return employeeDtoMapper.toEmployeeSimpleDto(employee, wholesaler.getCompanyContact());
     }
 
     @Override
