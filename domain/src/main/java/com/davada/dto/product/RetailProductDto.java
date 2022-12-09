@@ -14,7 +14,7 @@ public class RetailProductDto {
     String productAliasName;
     ProductPricePolicy productPricePolicy;
     RetailProductUnitPriceDto productUnitPrice;
-    RetailBeverageContainerDto beverageContainer;
+    //RetailBeverageContainerDto beverageContainer;
     String barcode;
     String boxBarcode;
     String bottleBarcode;

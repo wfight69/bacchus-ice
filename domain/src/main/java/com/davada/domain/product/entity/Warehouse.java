@@ -4,12 +4,10 @@ import com.davada.domain.common.AuditableEntity;
 import com.davada.domain.common.Refinable;
 import com.davada.domain.product.vo.WarehouseType;
 import com.davada.domain.wholesaler.vo.Location;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Warehouse extends AuditableEntity implements Refinable {
