@@ -6,6 +6,9 @@ import com.davada.domain.common.exception.ErpRuntimeException;
 import com.davada.domain.common.vo.BusinessCategory;
 import com.davada.domain.common.vo.CodeName;
 import com.davada.domain.common.vo.YN;
+import com.davada.domain.maintenance.vo.MaintenanceType;
+import com.davada.domain.maintenance.vo.RetailMaintenanceChannel;
+import com.davada.domain.maintenance.vo.RetailMaintenanceStatus;
 import com.davada.domain.order.vo.CalculateStatus;
 import com.davada.domain.order.vo.RetailOrderChannel;
 import com.davada.domain.order.vo.RetailOrderStatus;
@@ -28,8 +31,11 @@ import static com.davada.domain.order.error.RetailOrderErrorCodes.ORDER_2000;
 public class RetailMaintenance extends AuditableEntity implements Refinable {
     // 주문 UUID
     String orderUuid;
+    // 냉장업체 UUID
+    String icesalerUuid;
     // 주류도매업체 UUID
     String wholesalerUuid;
+    String wholesalerName;
     // 소매점 UUID
     String retailShopUuid;
     // 소매점 코드
@@ -59,6 +65,16 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     CalculateStatus calculateStatus;
     // 매출유형 판매/반품/기증/파손/차량출고
     SalesType salesType;
+
+    // 유지관리유형 출고(판매)/수리/회수/정비/기타
+    MaintenanceType maintenanceType;
+
+    // 유지관리 상태
+    RetailMaintenanceStatus retailMaintenanceStatus;
+
+    // 유지관리 체널 전화/주류도매/소매점 앱
+    RetailMaintenanceChannel retailMaintenanceChannel;
+
     // 주문요청 일자
     String orderDate;
     // 주문요청 시간
