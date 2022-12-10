@@ -29,6 +29,8 @@ import static com.davada.domain.order.error.RetailOrderErrorCodes.ORDER_2000;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class RetailMaintenance extends AuditableEntity implements Refinable {
+    // 유지관리 UUID
+    String retailMaintenanceUuid;
     // 주문 UUID
     String orderUuid;
     // 냉장업체 UUID
