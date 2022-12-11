@@ -4,25 +4,22 @@ import com.davada.domain.common.AuditableEntity;
 import com.davada.domain.common.Refinable;
 import com.davada.domain.common.exception.ErpRuntimeException;
 import com.davada.domain.common.vo.BusinessCategory;
-import com.davada.domain.common.vo.CodeName;
 import com.davada.domain.common.vo.YN;
+import com.davada.domain.maintenance.error.RetailMaintenanceErrorCodes;
 import com.davada.domain.maintenance.vo.MaintenanceType;
 import com.davada.domain.maintenance.vo.RetailMaintenanceChannel;
 import com.davada.domain.maintenance.vo.RetailMaintenanceStatus;
 import com.davada.domain.order.vo.CalculateStatus;
-import com.davada.domain.order.vo.RetailOrderChannel;
-import com.davada.domain.order.vo.RetailOrderStatus;
-import com.davada.domain.order.vo.SalesType;
+
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static com.davada.domain.order.error.RetailOrderErrorCodes.ORDER_2000;
 
 /**
- * 소매점 관리내역(출고,수리,회수,오버홀)
+ * 소매점 유지관리내역(출고,수리,회수,오버홀)
  */
 @Getter
 @Setter
@@ -31,13 +28,14 @@ import static com.davada.domain.order.error.RetailOrderErrorCodes.ORDER_2000;
 public class RetailMaintenance extends AuditableEntity implements Refinable {
     // 유지관리 UUID
     String retailMaintenanceUuid;
-    // 주문 UUID
-    String orderUuid;
     // 냉장업체 UUID
     String icesalerUuid;
+
     // 주류도매업체 UUID
     String wholesalerUuid;
     String wholesalerName;
+    String wholesalerCeoTelephone;
+
     // 소매점 UUID
     String retailShopUuid;
     // 소매점 코드
@@ -46,27 +44,67 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     String retailShopName;
     // 소매점 업종구분
     BusinessCategory businessCategory;
-    // 판매담당자 UUID
+
+    // 등록관련-----------------------
+    // 등록 일자
+    String createDate;
+    // 등록 시간
+    String createTime;
+    // 유지관리 등록내역
+    String createDescription;
+
+    // 품목명외
+    String productShortName;
+
+    // 접수관련-----------------------
+    // 접수생성 일자
+    String acceptDate;
+    // 접수생성 시간
+    String acceptTime;
+    // 접수담당자 UUID
     String employeeUuid;
-    // 판매담당자 이름
-    String employeeName;
-    // 판매담당자 코드
+    // 접수담당자 코드
     String employeeCode;
-    // 판매담당자 코스
-    CodeName salesCourse;
-    // 창고
+    // 접수담당자 이름
+    String employeeName;
+    // 접수 등록내역
+    String acceptDescription;
+
+    // 유지관리(a/s)진행관련-----------------------
+    // 유지관리 진행일자
+    String maintenanceDate;
+    // 유지관리 진행시간
+    String maintenanceTime;
+    // 유지관리(a/s)담당자 UUID
+    String maintenanceEmployeeUuid;
+    // 유지관리(a/s)담당자 코드
+    String maintenanceEmployeeCode;
+    // 유지관리(a/s)담당자 이름
+    String maintenanceEmployeeName;
+    // 유지관리 진행 등록내역
+    String maintenanceDescription;
+
+    // 유지관리(a/s)승인관련-----------------------
+    // 승인생성 일자
+    String approvalDate;
+    // 승인생성 시간
+    String approvalTime;
+    // 승인담당자 UUID
+    String approvalEmployeeUuid;
+    // 승인담당자 코드
+    String approvalEmployeeCode;
+    // 승인담당자 이름
+    String approvalEmployeeName;
+    // 승인 등록내역
+    String approvalDescription;
+
+    // 창고코드/명
     String warehouseUuid;
     String warehouseCode;
-    // 창고명
     String warehouseName;
-    // 청구서(주류판매계산서) 발행/미발행
-    YN invoiceIssueYn;
-    // 부가세 적용여부
-    YN vatYn;
+
     // 마감여부 미마감/마감
     CalculateStatus calculateStatus;
-    // 매출유형 판매/반품/기증/파손/차량출고
-    SalesType salesType;
 
     // 유지관리유형 출고(판매)/수리/회수/정비/기타
     MaintenanceType maintenanceType;
@@ -77,20 +115,8 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     // 유지관리 체널 전화/주류도매/소매점 앱
     RetailMaintenanceChannel retailMaintenanceChannel;
 
-    // 주문요청 일자
-    String orderDate;
-    // 주문요청 시간
-    String orderTime;
-    // 전표생성 일자
-    String orderCreateDate;
-    // 전표생성 시간
-    String orderCreateTime;
-    // 품목명외
-    String productShortName;
-    // 박스
-    Integer containerQuantity;
-    // 본
-    Integer bottleQuantity;
+    // 수량
+    Integer quantity;
 
     // 공급가
     BigDecimal amount = BigDecimal.ZERO;
@@ -98,35 +124,21 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     BigDecimal vat = BigDecimal.ZERO;
     // 소계
     BigDecimal subtotalAmount = BigDecimal.ZERO;
-    // 용기보증금
-    BigDecimal containerDeposit = BigDecimal.ZERO;
-    // 공병보증금
-    BigDecimal bottleDeposit = BigDecimal.ZERO;
     // 합계
     BigDecimal totalAmount = BigDecimal.ZERO;
 
-    // 주문상태
-    RetailOrderStatus retailOrderStatus;
+    // 유지관리 상품
+    Set<RetailMaintenanceItem> orderItems = new LinkedHashSet<>();
+
+    // 청구서(주류판매계산서) 발행/미발행
+    YN invoiceIssueYn;
+
     // 비고
     String description;
-    // 주문상품
-    Set<RetailMaintenanceItem> orderItems = new LinkedHashSet<>();
-    //---------
-    // 주문 채널
-    RetailOrderChannel retailOrderChannel;
-    // 읽기 여부(청취 여부)
-    YN readYn;
-    // 전표생성 여부
-    YN registerOrderYn;
-    // 주문요청 전화번호
-    String retailOrderTelephone;
-    // 주문내역
-    String orderDescription;
-    // 음성파일 아이디
-    String voiceFileId;
 
+    // 완료시처리
     public void orderComplete() {
-        this.retailOrderStatus = RetailOrderStatus.DELIVERED;
+        this.retailMaintenanceStatus = RetailMaintenanceStatus.DELIVERED;
     }
 
     @Override
@@ -134,16 +146,6 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
         if (invoiceIssueYn == null) {
             invoiceIssueYn = YN.N;
         }
-        if (vatYn == null) {
-            vatYn = YN.N;
-        }
-        if (readYn == null) {
-            readYn = YN.N;
-        }
-        if (registerOrderYn == null) {
-            registerOrderYn = YN.N;
-        }
-
         // make productShortName
     }
 
@@ -151,24 +153,21 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
         return new RetailMaintenance();
     }
 
-    public void registerRequestOrderStatus() {
-        retailOrderStatus = RetailOrderStatus.RECEIVED;
-        readYn = YN.N;
-        registerOrderYn = YN.N;
+    public void registerRequestMaintenanceStatus() {
+        retailMaintenanceStatus = RetailMaintenanceStatus.RECEIVED;
+        //registerMaintenanceYn = YN.N;
     }
 
-    public void registerOrderStatus() {
-        switch (retailOrderChannel) {
+    public void registerMaintenanceStatus() {
+        switch (retailMaintenanceChannel) {
             case DIRECT:
-                retailOrderStatus = RetailOrderStatus.ACCEPTED;
-                readYn = YN.Y;
-                registerOrderYn = YN.Y;
+                retailMaintenanceStatus = RetailMaintenanceStatus.ACCEPTED;
                 return;
             case APP:
-                registerRequestOrderStatus();
+                registerRequestMaintenanceStatus();
                 return;
             default:
-                throw new ErpRuntimeException(ORDER_2000, retailOrderChannel.name());
+                throw new ErpRuntimeException(RetailMaintenanceErrorCodes.ORDER_2000, retailMaintenanceChannel.name());
         }
     }
 }
