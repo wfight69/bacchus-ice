@@ -1,6 +1,7 @@
 package com.davada.domain.maintenance.condition;
 
 import com.davada.domain.maintenance.vo.MaintenanceType;
+import com.davada.domain.maintenance.vo.RetailMaintenanceChannel;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,14 +10,12 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RetailMaintenanceCondition {
+public class RetailRequestMaintenanceCondition {
     String wholesalerUuid;
     MaintenanceType maintenanceType;
-    String employeeUuid;
+    //RetailRequestMaintenanceStatus retailRequestMaintenanceStatus;
     String startMaintenanceDate;
     String endMaintenanceDate;
-    String startMaintenanceCreateDate;
-    String endMaintenanceCreateDate;
     String salesCourseCode;
     String salesManagerName;
     String retailShopCode;

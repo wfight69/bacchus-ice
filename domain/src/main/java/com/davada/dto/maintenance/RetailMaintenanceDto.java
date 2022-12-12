@@ -1,16 +1,10 @@
-package com.davada.domain.maintenance.entity;
+package com.davada.dto.maintenance;
 
-import com.davada.domain.common.AuditableEntity;
-import com.davada.domain.common.Refinable;
-import com.davada.domain.common.exception.ErpRuntimeException;
-import com.davada.domain.common.vo.BusinessCategory;
 import com.davada.domain.common.vo.YN;
-import com.davada.domain.maintenance.error.RetailMaintenanceErrorCodes;
 import com.davada.domain.maintenance.vo.MaintenanceType;
 import com.davada.domain.maintenance.vo.RetailMaintenanceChannel;
 import com.davada.domain.maintenance.vo.RetailMaintenanceStatus;
 import com.davada.domain.order.vo.CalculateStatus;
-
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -25,7 +19,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RetailMaintenance extends AuditableEntity implements Refinable {
+public class RetailMaintenanceDto {
     // 유지관리 UUID
     String maintenanceUuid;
     // 냉장업체 UUID
@@ -122,46 +116,11 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     BigDecimal totalAmount = BigDecimal.ZERO;
 
     // 유지관리 상품
-    Set<RetailMaintenanceItem> maintenanceItems = new LinkedHashSet<>();
+    Set<RetailMaintenanceItemDto> maintenanceItems = new LinkedHashSet<>();
 
     // 청구서(주류판매계산서) 발행/미발행
     YN invoiceIssueYn;
 
     // 비고-지연사유 정리
     String description;
-
-    // 완료시처리
-    public void orderComplete() {
-        this.retailMaintenanceStatus = RetailMaintenanceStatus.DELIVERED;
-    }
-
-    @Override
-    public void refineValues() {
-        if (invoiceIssueYn == null) {
-            invoiceIssueYn = YN.N;
-        }
-        // make productShortName
-    }
-
-    public static RetailMaintenance getInstance() {
-        return new RetailMaintenance();
-    }
-
-    public void registerRequestMaintenanceStatus() {
-        retailMaintenanceStatus = RetailMaintenanceStatus.RECEIVED;
-        //registerMaintenanceYn = YN.N;
-    }
-
-    public void registerMaintenanceStatus() {
-        switch (retailMaintenanceChannel) {
-            case DIRECT:
-                retailMaintenanceStatus = RetailMaintenanceStatus.ACCEPTED;
-                return;
-            case APP:
-                registerRequestMaintenanceStatus();
-                return;
-            default:
-                throw new ErpRuntimeException(RetailMaintenanceErrorCodes.MAINTENANCE_2000, retailMaintenanceChannel.name());
-        }
-    }
 }

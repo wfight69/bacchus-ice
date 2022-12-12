@@ -3,7 +3,7 @@ package com.davada.domain.maintenance.error;
 import com.davada.domain.common.exception.ErrorCodes;
 
 public enum RetailMaintenanceItemErrorCodes implements ErrorCodes {
-    ORDER_ITEM_1000("유지관리 상품을 찾을 수 없습니다.[orderItemUuid: {0}]"),
+    MAINTENANCE_ITEM_1000("유지관리 상품을 찾을 수 없습니다.[maintenanceItemUuid: {0}]"),
     ;
 
     private String message;

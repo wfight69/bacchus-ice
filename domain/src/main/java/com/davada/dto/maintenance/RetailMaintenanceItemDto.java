@@ -1,11 +1,8 @@
-package com.davada.domain.maintenance.entity;
+package com.davada.dto.maintenance;
 
 import com.davada.domain.common.Entity;
 import com.davada.domain.common.Refinable;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.math.BigDecimal;
 
@@ -13,9 +10,10 @@ import java.math.BigDecimal;
  * 소매점 관리내역(출고,수리,회수,오버홀) 품목 리스트
  */
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class RetailMaintenanceItem implements Entity, Refinable {
+public class RetailMaintenanceItemDto {
     // 유지관리 품목 UUID
     String maintenanceItemUuid;
     // 상품 UUID
@@ -34,9 +32,4 @@ public class RetailMaintenanceItem implements Entity, Refinable {
     BigDecimal subtotalAmount;
     // 주문 합계
     BigDecimal totalAmount;
-
-    @Override
-    public void refineValues() {
-
-    }
 }
