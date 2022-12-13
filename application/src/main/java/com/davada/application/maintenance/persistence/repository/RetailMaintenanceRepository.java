@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface RetailMaintenanceRepository extends JpaRepository<RetailMaintenanceData, String>,
-        RetailMaintenanceRepositoryCustom {
+        RetailMaintenanceRepositoryCustom, RetailRequestMaintenanceRepositoryCustom {
     List<RetailMaintenanceData> findByWholesalerUuidAndAuditLog_Deleted(String wholesalerUuid, Boolean deleted);
 
     @Query("select r from RetailMaintenanceData r " +

@@ -140,15 +140,15 @@ public class RetailMaintenancePersistenceAdapter {
     }
 
 
-//    public List<RetailMaintenance> retrieveListByCondition(RetailRequestMaintenanceCondition condition, int offset, int limit) {
-//        return retailMaintenanceRepository.findListByCondition(condition, offset, limit)
-//                .stream()
-//                .map(jpaMapper::fromMaintenanceData)
-//                .collect(Collectors.toList());
-//    }
-//
-//    public long countByCondition(RetailRequestMaintenanceCondition condition) {
-//        return retailMaintenanceRepository.countByCondition(condition);
-//    }
+    public List<RetailMaintenance> retrieveListByCondition(RetailRequestMaintenanceCondition condition, int offset, int limit) {
+        return retailMaintenanceRepository.findListByCondition(condition, offset, limit)
+                .stream()
+                .map(jpaMapper::fromMaintenanceData)
+                .collect(Collectors.toList());
+    }
+
+    public long countByCondition(RetailRequestMaintenanceCondition condition) {
+        return retailMaintenanceRepository.countByCondition(condition);
+    }
     
 }

@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class RetailRequestMaintenanceCondition {
     String wholesalerUuid;
     MaintenanceType maintenanceType;
+    RetailMaintenanceChannel retailMaintenanceChannel;
     //RetailRequestMaintenanceStatus retailRequestMaintenanceStatus;
     String startMaintenanceDate;
     String endMaintenanceDate;
