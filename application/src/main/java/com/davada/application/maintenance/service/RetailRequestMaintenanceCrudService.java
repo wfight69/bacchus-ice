@@ -30,11 +30,11 @@ public class RetailRequestMaintenanceCrudService implements RetailRequestMainten
 
     @Override
     public IdValue createRequestMaintenance(RetailRequestMaintenanceCrudUseCase.CreateRequestMaintenanceCommand command) {
-        if (isEmpty(command.getWholesalerUuid())) {
-            throw new ErpRuntimeException(REQUEST_MAINTENANCE_2001, command.getWholesalerUuid());
+        if (isEmpty(command.getIcesalerUuid())) {
+            throw new ErpRuntimeException(REQUEST_MAINTENANCE_2001, command.getIcesalerUuid());
         }
-        if (isEmpty(command.getRetailMaintenanceTelephone())) {
-            throw new ErpRuntimeException(REQUEST_MAINTENANCE_2002, command.getRetailMaintenanceTelephone());
+        if (isEmpty(command.getWholesalerUuid())) {
+            throw new ErpRuntimeException(REQUEST_MAINTENANCE_2002, command.getWholesalerUuid());
         }
 
         var maintenanceUuid = ErpId.newId().getUuid().toString();

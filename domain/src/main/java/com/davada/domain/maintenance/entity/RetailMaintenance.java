@@ -14,6 +14,7 @@ import com.davada.domain.order.vo.CalculateStatus;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -148,6 +149,7 @@ public class RetailMaintenance extends AuditableEntity implements Refinable {
     }
 
     public void registerRequestMaintenanceStatus() {
+        // WholeSaler등록시
         retailMaintenanceStatus = RetailMaintenanceStatus.RECEIVED;
         //registerMaintenanceYn = YN.N;
     }

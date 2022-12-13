@@ -15,26 +15,20 @@ import org.mapstruct.ReportingPolicy;
         unmappedTargetPolicy = ReportingPolicy.ERROR
 )
 public interface RetailRequestMaintenanceDomainMapper {
-    default RetailMaintenance toDomain(String orderUuid, RetailRequestMaintenanceCrudUseCase.CreateRequestMaintenanceCommand command) {
+    default RetailMaintenance toDomain(String maintenanceUuid, RetailRequestMaintenanceCrudUseCase.CreateRequestMaintenanceCommand command) {
         RetailMaintenance retailMaintenance = RetailMaintenance.getInstance();
-        retailMaintenance.setMaintenanceUuid(orderUuid);
-        retailMaintenance.setRetailMaintenanceStatus(RetailMaintenanceStatus.RECEIVED);
+        retailMaintenance.setMaintenanceUuid(maintenanceUuid);
+        retailMaintenance.setIcesalerUuid(command.getIcesalerUuid());
         retailMaintenance.setWholesalerUuid(command.getWholesalerUuid());
+        retailMaintenance.setRetailShopUuid(command.getRetailShopUuid());
+        retailMaintenance.setRetailShopCode(command.getRetailShopCode());
+        retailMaintenance.setRetailShopName(command.getRetailShopName());
+        retailMaintenance.setRetailMaintenanceStatus(RetailMaintenanceStatus.RECEIVED);
+        retailMaintenance.setMaintenanceType(command.getMaintenanceType());
         retailMaintenance.setRetailMaintenanceChannel(command.getRetailMaintenanceChannel());
-        //retailMaintenance.setMaintenanceDescription(command.getMaintenanceDescription());
+        retailMaintenance.setCreateDescription(command.getCreateDescription());
         retailMaintenance.setMaintenanceDate(DateHelper.currentDateString());
         retailMaintenance.setMaintenanceTime(DateHelper.currentTimeString());
-
-//        if (retailShopDto != null) {
-//            retailMaintenance.setRetailShopUuid(retailShopDto.getRetailShopUuid());
-//            retailMaintenance.setRetailShopCode(retailShopDto.getRetailShopCode());
-//            retailMaintenance.setRetailShopName(retailShopDto.getRetailShopName());
-//            if (retailShopDto.getSalesManager() != null) {
-//                retailMaintenance.setEmployeeUuid(retailShopDto.getSalesManager().getEmployeeUuid());
-//                retailMaintenance.setEmployeeName(retailShopDto.getSalesManager().getEmployeeName());
-//                retailMaintenance.setSalesCourse(retailShopDto.getSalesManager().getSalesCourse());
-//            }
-//        }
 
         return retailMaintenance;
     }
