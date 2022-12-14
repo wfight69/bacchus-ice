@@ -1,11 +1,9 @@
-package com.davada.board;
+package com.davada.payment;
 
-import com.davada.application.board.service.port.NoticeBoardQueryUseCase;
 import com.davada.application.common.CommonResponse;
 import com.davada.application.common.ErrorCode;
-import com.davada.domain.board.condition.NoticeBoardCondition;
-
-import com.davada.domain.purchase.vo.PurchaseType;
+import com.davada.application.payment.service.port.DepositQueryUseCase;
+import com.davada.domain.payment.condition.DepositCondition;
 import io.smallrye.mutiny.Uni;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -25,29 +23,29 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/query/wholesalers")
-@Tag(name = "NoticeBoard Query", description = "NoticeBoard query operations")
-public class NoticeBoardQueryController {
-    private final NoticeBoardQueryUseCase noticeBoardQueryUseCase;
+@Tag(name = "Deposit Query", description = "Deposit query operations")
+public class DepositQueryController {
+    private final DepositQueryUseCase depositQueryUseCase;
     private final ParameterBeanMapper parameterBeanMapper;
 
     @GET
-    @Path("/{wholesalerUuid}/notice-boards")
+    @Path("/{wholesalerUuid}/deposit")
     @Transactional(value = Transactional.TxType.SUPPORTS)
-    @Operation(operationId = "retrieveListByCondition", description = "search NoticeBoard by condition")
+    @Operation(operationId = "retrieveListByCondition", description = "search Deposit by condition")
     public Uni<Response> retrieveListByCondition(
             @PathParam("wholesalerUuid") String wholesalerUuid,
             @BeanParam ParameterBean parameterBean) {
-        NoticeBoardCondition noticeBoardCondition = parameterBeanMapper.toCondition(wholesalerUuid, parameterBean);
+        DepositCondition depositCondition = parameterBeanMapper.toCondition(wholesalerUuid, parameterBean);
         return Uni.createFrom()
-                .item(noticeBoardQueryUseCase.retrieveListByCondition(
-                        noticeBoardCondition,
+                .item(depositQueryUseCase.retrieveListByCondition(
+                        depositCondition,
                         parameterBean.getOffset(),
                         parameterBean.getLimit()))
                 .onItem()
                 .transform(f -> {
                     if (f != null) {
                         Response.ResponseBuilder ok = Response.ok(CommonResponse.success(f));
-                        long count = noticeBoardQueryUseCase.countByCondition(noticeBoardCondition);
+                        long count = depositQueryUseCase.countByCondition(depositCondition);
                         ok.header("X-ERP-TOTAL-COUNT", count);
                         return ok;
                     } else {
@@ -64,12 +62,26 @@ public class NoticeBoardQueryController {
         int offset = 0;
         @QueryParam("limit")
         int limit = 30;
-        @QueryParam("purchaseType")
-        PurchaseType purchaseType;
+        @QueryParam("retailShopUuid")
+        String retailShopUuid;
+        @QueryParam("retailShopCode")
+        String retailShopCode;
+        @QueryParam("retailShopName")
+        String retailShopName;
+        @QueryParam("employeeCode")
+        String employeeCode;
         @QueryParam("employeeName")
         String employeeName;
-        @QueryParam("mainText")
-        String mainText;
+        // 전표일자
+        @QueryParam("startCreateDate")
+        String startCreateDate;
+        @QueryParam("endCreateDate")
+        String endCreateDate;
+        // 입금일자
+        @QueryParam("startPaymentDate")
+        String startPaymentDate;
+        @QueryParam("endPaymentDate")
+        String endPaymentDate;
     }
 
 }

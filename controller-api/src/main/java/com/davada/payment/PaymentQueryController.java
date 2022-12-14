@@ -1,11 +1,9 @@
-package com.davada.board;
+package com.davada.payment;
 
-import com.davada.application.board.service.port.NoticeBoardQueryUseCase;
 import com.davada.application.common.CommonResponse;
 import com.davada.application.common.ErrorCode;
-import com.davada.domain.board.condition.NoticeBoardCondition;
-
-import com.davada.domain.purchase.vo.PurchaseType;
+import com.davada.application.payment.service.port.PaymentQueryUseCase;
+import com.davada.domain.payment.condition.PaymentCondition;
 import io.smallrye.mutiny.Uni;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -25,29 +23,29 @@ import javax.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Path("/v1/query/wholesalers")
-@Tag(name = "NoticeBoard Query", description = "NoticeBoard query operations")
-public class NoticeBoardQueryController {
-    private final NoticeBoardQueryUseCase noticeBoardQueryUseCase;
+@Tag(name = "Payment Query", description = "Payment query operations")
+public class PaymentQueryController {
+    private final PaymentQueryUseCase purchasePaymentQueryUseCase;
     private final ParameterBeanMapper parameterBeanMapper;
 
     @GET
-    @Path("/{wholesalerUuid}/notice-boards")
+    @Path("/{wholesalerUuid}/payment")
     @Transactional(value = Transactional.TxType.SUPPORTS)
-    @Operation(operationId = "retrieveListByCondition", description = "search NoticeBoard by condition")
+    @Operation(operationId = "retrieveListByCondition", description = "search Payment by condition")
     public Uni<Response> retrieveListByCondition(
             @PathParam("wholesalerUuid") String wholesalerUuid,
             @BeanParam ParameterBean parameterBean) {
-        NoticeBoardCondition noticeBoardCondition = parameterBeanMapper.toCondition(wholesalerUuid, parameterBean);
+        PaymentCondition purchasePaymentCondition = parameterBeanMapper.toCondition(wholesalerUuid, parameterBean);
         return Uni.createFrom()
-                .item(noticeBoardQueryUseCase.retrieveListByCondition(
-                        noticeBoardCondition,
+                .item(purchasePaymentQueryUseCase.retrieveListByCondition(
+                        purchasePaymentCondition,
                         parameterBean.getOffset(),
                         parameterBean.getLimit()))
                 .onItem()
                 .transform(f -> {
                     if (f != null) {
                         Response.ResponseBuilder ok = Response.ok(CommonResponse.success(f));
-                        long count = noticeBoardQueryUseCase.countByCondition(noticeBoardCondition);
+                        long count = purchasePaymentQueryUseCase.countByCondition(purchasePaymentCondition);
                         ok.header("X-ERP-TOTAL-COUNT", count);
                         return ok;
                     } else {
@@ -64,12 +62,20 @@ public class NoticeBoardQueryController {
         int offset = 0;
         @QueryParam("limit")
         int limit = 30;
-        @QueryParam("purchaseType")
-        PurchaseType purchaseType;
-        @QueryParam("employeeName")
-        String employeeName;
-        @QueryParam("mainText")
-        String mainText;
+        @QueryParam("supplierUuid")
+        String supplierUuid;
+        @QueryParam("supplierCode")
+        String supplierCode;
+        @QueryParam("supplierName")
+        String supplierName;
+        @QueryParam("startCreateDate")
+        String startCreateDate;
+        @QueryParam("endCreateDate")
+        String endCreateDate;
+        @QueryParam("startPaymentDate")
+        String startPaymentDate;
+        @QueryParam("endPaymentDate")
+        String endPaymentDate;
     }
 
 }

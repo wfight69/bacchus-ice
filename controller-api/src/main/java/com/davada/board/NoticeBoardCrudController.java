@@ -48,6 +48,7 @@ public class NoticeBoardCrudController {
     }
 
     //TODO: 공지사항 팝업용 API : 최종 이면서 읽지 않은것만 리턴한다. // 사용자에 따라, 사용자체크는 토큰으로...
+
     @GET
     @Path("/{noticeBoardUuid}")
     @Transactional(value = Transactional.TxType.REQUIRED) // Need Tx for retrieve for update view count
