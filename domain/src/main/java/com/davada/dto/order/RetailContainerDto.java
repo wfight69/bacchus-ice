@@ -1,8 +1,6 @@
 package com.davada.dto.order;
 
 import com.davada.domain.common.vo.CodeName;
-import com.davada.domain.order.entity.ContainerItem;
-import com.davada.domain.order.vo.ContainerCollectType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

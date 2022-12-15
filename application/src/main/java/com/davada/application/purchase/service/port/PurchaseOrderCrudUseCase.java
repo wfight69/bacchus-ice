@@ -57,14 +57,10 @@ public interface PurchaseOrderCrudUseCase {
         String orderDate;
         String orderTime;
         String productShortName;
-        Integer containerQuantity;
-        Integer bottleQuantity;
-        Integer supplementQuantity;
+        Integer quantity;
         BigDecimal amount = BigDecimal.ZERO;
         BigDecimal vat = BigDecimal.ZERO;
         BigDecimal subtotalAmount = BigDecimal.ZERO;
-        BigDecimal containerDeposit = BigDecimal.ZERO;
-        BigDecimal bottleDeposit = BigDecimal.ZERO;
         BigDecimal totalAmount = BigDecimal.ZERO;
         String description;
         @Valid Set<CreatePurchaseOrderItemCommand> purchaseOrderItems;
@@ -82,14 +78,10 @@ public interface PurchaseOrderCrudUseCase {
         String volume;
         Integer bottlesInBox;
         UnitPrice containerPrice;
-        @NotNull Integer containerQuantity;
-        @NotNull Integer bottleQuantity;
-        @NotNull Integer supplementQuantity;
+        @NotNull Integer quantity;
         @NotNull BigDecimal amount;
         @NotNull BigDecimal vat;
         @NotNull BigDecimal subtotalAmount;
-        @NotNull BigDecimal containerDeposit;
-        @NotNull BigDecimal bottleDeposit;
         @NotNull BigDecimal totalAmount;
     }
 

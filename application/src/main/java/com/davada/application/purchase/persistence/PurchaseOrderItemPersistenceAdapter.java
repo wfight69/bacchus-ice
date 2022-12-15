@@ -17,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PurchaseOrderItemPersistenceAdapter {
 
-    private final PurchaseOrderDataMapper jpaMapper;
+    private final PurchaseOrderItemDataMapper jpaMapper;
     private final PurchaseOrderItemRepository purchaseOrderItemRepository;
 
     public void create(final PurchaseOrderItem purchaseOrderItem) {
@@ -29,7 +29,7 @@ public class PurchaseOrderItemPersistenceAdapter {
                 .map(jpaMapper::fromData);
     }
 
-    public List<PurchaseOrderItem> retrieveAllPurchaseOrderItem(String orderUuid) {
+    public List<PurchaseOrderItem> retrieveAllPurchaseOrderItem(String purchaseOrderUuid) {
         return Collections.emptyList();
     }
 

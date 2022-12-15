@@ -1,6 +1,5 @@
 package com.davada.dto.purchase;
 
-import com.davada.domain.order.vo.RetailBeverageContainer;
 import com.davada.domain.product.vo.UnitPrice;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,13 +22,9 @@ public class PurchaseOrderItemDto {
     String volume;
     Integer bottlesInBox;
     UnitPrice containerPrice;
-    Integer containerQuantity;
-    Integer bottleQuantity;
-    Integer supplementQuantity;
+    Integer quantity;
     BigDecimal amount;
     BigDecimal vat;
     BigDecimal subtotalAmount;
-    BigDecimal containerDeposit;
-    BigDecimal bottleDeposit;
     BigDecimal totalAmount;
 }

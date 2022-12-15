@@ -1,6 +1,5 @@
 package com.davada.domain.order.condition;
 
-import com.davada.domain.order.vo.ContainerCollectType;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

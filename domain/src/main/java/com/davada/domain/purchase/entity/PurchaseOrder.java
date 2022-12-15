@@ -54,22 +54,14 @@ public class PurchaseOrder extends AuditableEntity implements Refinable {
     String orderTime;
     // 품목명외
     String productShortName;
-    // 박스
-    Integer containerQuantity;
-    // 본
-    Integer bottleQuantity;
-    // 보충 (무료 박스 개수)
-    Integer supplementQuantity;
+    // 수량
+    Integer quantity;
     // 공급가
     BigDecimal amount = BigDecimal.ZERO;
     // 부가세
     BigDecimal vat = BigDecimal.ZERO;
     // 소계
     BigDecimal subtotalAmount = BigDecimal.ZERO;
-    // 용기보증금
-    BigDecimal containerDeposit = BigDecimal.ZERO;
-    // 공병보증금
-    BigDecimal bottleDeposit = BigDecimal.ZERO;
     // 합계
     BigDecimal totalAmount = BigDecimal.ZERO;
     // 비고

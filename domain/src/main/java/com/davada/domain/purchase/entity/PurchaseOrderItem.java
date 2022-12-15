@@ -33,22 +33,14 @@ public class PurchaseOrderItem implements Entity, Refinable {
 
     // 상품 상자별 단가/부가세
     UnitPrice containerPrice;
-    // 상자 주문 개수
-    Integer containerQuantity;
-    // 본 주문 개수
-    Integer bottleQuantity;
-    // 보충 (무료 박스 개수)
-    Integer supplementQuantity;
+    // 매입 주문 개수
+    Integer quantity;
     // 공급가
     BigDecimal amount;
     // 부가세
     BigDecimal vat;
     // 주문 소계
     BigDecimal subtotalAmount;
-    // 용기보증금 소계
-    BigDecimal containerDeposit;
-    // 공병보증금 소계
-    BigDecimal bottleDeposit;
     // 주문 합계
     BigDecimal totalAmount;
 

@@ -37,14 +37,10 @@ public interface PurchaseOrderItemCrudUseCase {
         Integer bottlesInBox;
         RetailBeverageContainer beverageContainer;
         UnitPrice containerPrice;
-        Integer containerQuantity;
-        Integer bottleQuantity;
-        Integer supplementQuantity;
+        Integer quantity;
         BigDecimal amount;
         BigDecimal vat;
         BigDecimal subtotalAmount;
-        BigDecimal containerDeposit;
-        BigDecimal bottleDeposit;
         BigDecimal totalAmount;
     }
 }

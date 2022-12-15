@@ -15,8 +15,6 @@ public interface PurchaseOrderMapper {
     @Mapping(target = "amount", expression = "java(BigDecimal.ZERO)")
     @Mapping(target = "vat", expression = "java(BigDecimal.ZERO)")
     @Mapping(target = "subtotalAmount", expression = "java(BigDecimal.ZERO)")
-    @Mapping(target = "containerDeposit", expression = "java(BigDecimal.ZERO)")
-    @Mapping(target = "bottleDeposit", expression = "java(BigDecimal.ZERO)")
     @Mapping(target = "totalAmount", expression = "java(BigDecimal.ZERO)")
     PurchaseOrder toDomain(String purchaseOrderUuid, PurchaseOrderCrudUseCase.CreatePurchaseOrderCommand command);
 

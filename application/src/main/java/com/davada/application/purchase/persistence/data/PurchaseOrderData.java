@@ -47,14 +47,10 @@ public class PurchaseOrderData {
     String orderDate;
     String orderTime;
     String productShortName;
-    Integer containerQuantity;
-    Integer bottleQuantity;
-    Integer supplementQuantity;
+    Integer quantity;
     BigDecimal amount = BigDecimal.ZERO;
     BigDecimal vat = BigDecimal.ZERO;
     BigDecimal subtotalAmount = BigDecimal.ZERO;
-    BigDecimal containerDeposit = BigDecimal.ZERO;
-    BigDecimal bottleDeposit = BigDecimal.ZERO;
     BigDecimal totalAmount = BigDecimal.ZERO;
     String description;
     @OneToMany(mappedBy = "purchaseOrder", orphanRemoval = true)
@@ -73,23 +69,17 @@ public class PurchaseOrderData {
     }
 
     public void reCalculateOrder() {
-        containerQuantity = 0;
-        bottleQuantity = 0;
+        quantity = 0;
         amount = BigDecimal.ZERO;
         vat = BigDecimal.ZERO;
         subtotalAmount = BigDecimal.ZERO;
-        containerDeposit = BigDecimal.ZERO;
-        bottleDeposit = BigDecimal.ZERO;
         totalAmount = BigDecimal.ZERO;
 
         purchaseOrderItems.forEach(purchaseOrderItem -> {
-            containerQuantity = containerQuantity + purchaseOrderItem.getContainerQuantity();
-            bottleQuantity = bottleQuantity + purchaseOrderItem.getBottleQuantity();
+            quantity = quantity + purchaseOrderItem.getQuantity();
             amount = amount.add(purchaseOrderItem.getAmount());
             vat = vat.add(purchaseOrderItem.getVat());
             subtotalAmount = subtotalAmount.add(purchaseOrderItem.getSubtotalAmount());
-            containerDeposit = containerDeposit.add(purchaseOrderItem.getContainerDeposit());
-            bottleDeposit = bottleDeposit.add(purchaseOrderItem.getBottleDeposit());
             totalAmount = totalAmount.add(purchaseOrderItem.getTotalAmount());
         });
         updateProductShortName();
@@ -128,22 +118,14 @@ public class PurchaseOrderData {
                     value -> this.orderTime = trim(value));
             nameValuePairs.pullOut("productShortName",
                     value -> this.productShortName = trim(value));
-            nameValuePairs.pullOut("containerQuantity",
-                    value -> this.containerQuantity = Integer.parseInt(value));
-            nameValuePairs.pullOut("bottleQuantity",
-                    value -> this.bottleQuantity = Integer.parseInt(value));
-            nameValuePairs.pullOut("supplementQuantity",
-                    value -> this.supplementQuantity = Integer.parseInt(value));
+            nameValuePairs.pullOut("quantity",
+                    value -> this.quantity = Integer.parseInt(value));
             nameValuePairs.pullOut("amount",
                     value -> this.amount = new BigDecimal(value));
             nameValuePairs.pullOut("vat",
                     value -> this.vat = new BigDecimal(value));
             nameValuePairs.pullOut("subtotalAmount",
                     value -> this.subtotalAmount = new BigDecimal(value));
-            nameValuePairs.pullOut("containerDeposit",
-                    value -> this.containerDeposit = new BigDecimal(value));
-            nameValuePairs.pullOut("bottleDeposit",
-                    value -> this.bottleDeposit = new BigDecimal(value));
             nameValuePairs.pullOut("totalAmount",
                     value -> this.totalAmount = new BigDecimal(value));
             nameValuePairs.pullOut("description",

@@ -1,4 +1,4 @@
-package com.davada.domain.order.error;
+package com.davada.domain.order.vo.error;
 
 import com.davada.domain.common.exception.ErrorCodes;
 

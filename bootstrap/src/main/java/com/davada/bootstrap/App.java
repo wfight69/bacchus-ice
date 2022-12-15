@@ -1,4 +1,4 @@
-package com.davada;
+package com.davada.bootstrap;
 
 
 import io.quarkus.runtime.Quarkus;

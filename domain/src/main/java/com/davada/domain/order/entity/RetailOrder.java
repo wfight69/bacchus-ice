@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-import static com.davada.domain.order.error.RetailOrderErrorCodes.ORDER_2000;
+import static com.davada.domain.order.vo.error.RetailOrderErrorCodes.ORDER_2000;
 
 /**
  * 판매전표 주문

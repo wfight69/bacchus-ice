@@ -35,14 +35,10 @@ public class PurchaseOrderDto {
     String orderDate;
     String orderTime;
     String productShortName;
-    Integer containerQuantity;
-    Integer bottleQuantity;
-    Integer supplementQuantity;
+    Integer quantity;
     BigDecimal amount = BigDecimal.ZERO;
     BigDecimal vat = BigDecimal.ZERO;
     BigDecimal subtotalAmount = BigDecimal.ZERO;
-    BigDecimal containerDeposit = BigDecimal.ZERO;
-    BigDecimal bottleDeposit = BigDecimal.ZERO;
     BigDecimal totalAmount = BigDecimal.ZERO;
     String description;
     Set<PurchaseOrderItemDto> purchaseOrderItems;
