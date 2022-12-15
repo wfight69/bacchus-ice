@@ -1,0 +1,8 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "retailOrderTelephone": "010-1234-1234",
+  "retailOrderChannel": "KAKAO",
+  "orderDescription": "orderDescription",
+  "voiceFileId": "voiceFileId",
+  "employeeUuid": "{{employeeUuid}}"
+}

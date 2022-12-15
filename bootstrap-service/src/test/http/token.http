@@ -1,0 +1,46 @@
+### 1 POST /api/v1/token
+POST http://erp-dev.bacchuserp.com/api/v1/token
+
+{
+  "username":"user",
+  "password":"11111"
+}
+
+### 2 POST /api/v1/token
+POST http://13.124.198.189:8081/api/v1/token
+
+{
+  "username":"user",
+  "password":"11111"
+}
+
+### 3 POST /api/v1/token for dp
+POST http://localhost:8080/api/v1/token
+
+{
+  "credential":"YmFjY2h1cy11c2VyOjExMTEx",
+  "grant_type":"access_token",
+  "client_id":"dp",
+  "client_secret":"7987f7cb05cb1992"
+}
+
+### 4 POST /api/v1/token for mp
+POST http://localhost:8080/api/v1/token
+
+{
+  "credential":"YmFjY2h1cy11c2VyOjExMTEx",
+  "grant_type":"access_token",
+  "client_id":"mp",
+  "client_secret":"b5cb7174383b5aab"
+}
+
+### 4 POST /api/v1/token for sp
+POST http://localhost:8080/api/v1/token
+
+{
+  "credential": "c3RyaW5nMTpzdHJpbmc=",
+  "grant_type": "access_token",
+  "refresh_token": "string",
+  "client_id": "sp",
+  "client_secret": "6ba2cc21bc1ed9bd"
+}

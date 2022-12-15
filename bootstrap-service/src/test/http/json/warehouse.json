@@ -1,0 +1,22 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "warehouseCode": "warehouseCode",
+  "warehouseName": "warehouseName",
+  "location": {
+    "roadAddress": "roadAddress",
+    "roadAddressDetails": "roadAddressDetails",
+    "landAddress": "landAddress",
+    "landAddressDetails": "landAddressDetails",
+    "zipCode": "zipCode",
+    "province": "SEOUL",
+    "latitude": 0,
+    "longitude": 0
+  },
+  "telephone": "010-1234-1234",
+  "employeeUuid": "{{employeeUuid}}",
+  "employeeName": "employeeName",
+  "supplierUuid": "{{supplierUuid}}",
+  "supplierName": "supplierName",
+  "warehouseType": "WAREHOUSE",
+  "description": "description"
+}

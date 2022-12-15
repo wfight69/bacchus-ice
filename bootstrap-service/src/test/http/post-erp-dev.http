@@ -1,0 +1,73 @@
+
+### POST 1.wholesalers
+POST http://erp-dev.bacchuserp.com:8081/api/v1/wholesalers
+
+< ./json/wholesaler.json
+> {% client.global.set("wholesalerUuid", response.body.data.wholesalerUuid) %}
+
+### POST 2.employees
+POST http://erp-dev.bacchuserp.com:8081/api/v1/employees
+
+< ./json/employee.json
+> {% client.global.set("employeeUuid", response.body.data.employeeUuid) %}
+
+### POST 3.1.retail-shops
+POST http://erp-dev.bacchuserp.com:8081/api/v1/retail-shops
+
+< ./json/retailshop.json
+> {% client.global.set("retailShopUuid", response.body.data.retailShopUuid) %}
+
+### POST 3.2.retail-order-telephones
+POST http://erp-dev.bacchuserp.com:8081/api/v1/retail-order-telephones
+
+< ./json/retail-order-telephone.json
+> {% client.global.set("retailOrderTelephoneUuid", response.body.data.retailOrderTelephoneUuid) %}
+
+### POST 4.suppliers
+POST http://erp-dev.bacchuserp.com:8081/api/v1/suppliers
+
+< ./json/supplier.json
+> {% client.global.set("supplierUuid", response.body.data.supplierUuid) %}
+
+### POST 5.warehouses
+POST http://erp-dev.bacchuserp.com:8081/api/v1/warehouses
+
+< ./json/warehouse.json
+> {% client.global.set("warehouseUuid", response.body.data.warehouseUuid) %}
+
+### POST 6.beverage-containers
+POST http://erp-dev.bacchuserp.com:8081/api/v1/beverage-containers
+
+< ./json/beverageContainer.json
+> {% client.global.set("beverageContainerUuid", response.body.data.beverageContainerUuid) %}
+
+### POST 7.products
+POST http://erp-dev.bacchuserp.com:8081/api/v1/products
+
+< ./json/product.json
+> {% client.global.set("productUuid", response.body.data.productUuid) %}
+
+
+### POST 8.1.order-app
+POST http://erp-dev.bacchuserp.com:8081/api/v1/orders
+
+< ./json/order-app.json
+> {% client.global.set("orderUuid", response.body.data.orderUuid) %}
+
+### POST 8.2.request-order-voice
+POST http://erp-dev.bacchuserp.com:8081/api/v1/request-orders
+
+< ./json/order-voice.json
+> {% client.global.set("requestOrderUuid", response.body.data.requestOrderUuid) %}
+
+### POST 8.2.request-order-kakao
+POST http://erp-dev.bacchuserp.com:8081/api/v1/request-orders
+
+< ./json/order-kakao.json
+> {% client.global.set("requestOrderUuid", response.body.data.requestOrderUuid) %}
+
+### POST 8.2.request-order-sms
+POST http://erp-dev.bacchuserp.com:8081/api/v1/request-orders
+
+< ./json/order-sms.json
+> {% client.global.set("requestOrderUuid", response.body.data.requestOrderUuid) %}

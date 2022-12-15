@@ -1,0 +1,6 @@
+{
+  "retailShopUuid": "string",
+  "loginId": "string1",
+  "password": "string",
+  "name": "string"
+}

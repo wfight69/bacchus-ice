@@ -1,0 +1,56 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "retailShopCode": "retailShopCode",
+  "retailShopName": "retailShopName",
+  "businessNumber": "businessNumber",
+  "mobilePhoneNumber": "mobilePhoneNumber",
+  "location": {
+    "roadAddress": "roadAddress",
+    "roadAddressDetails": "roadAddressDetails",
+    "landAddress": "landAddress",
+    "landAddressDetails": "landAddressDetails",
+    "zipCode": "zipCode",
+    "province": "SEOUL",
+    "latitude": 0,
+    "longitude": 0
+  },
+  "companyType": "CORPORATION",
+  "industryType": "ALCOHOLIC",
+  "bondLimitAmount": 0,
+  "companyContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "ceoContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "managerContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "licenseNo": "string",
+  "uptae": "string",
+  "jongmok": "string",
+  "employeeUuid": "{{employeeUuid}}",
+  "businessCategory": "ENT_STORE",
+  "containerDeposit": "N",
+  "retailShopStatus": "OPEN",
+  "servicePeriod": {
+    "serviceStartDate": "string",
+    "serviceEndDate": "string"
+  },
+  "description": "string",
+  "chargeDetails": {
+    "taxDepartmentName": "string",
+    "taxTelephone": "string",
+    "taxChargeName": "string",
+    "taxEmail": "string"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "retailShopUuid": "{{retailShopUuid}}",
+  "retailShopCode": "retailShopCode",
+  "retailShopName": "retailShopName",
+  "businessCategory": "ENT_STORE",
+  "employeeUuid": "{{employeeUuid}}",
+  "employeeName": "employeeName",
+  "employeeCode": "employeeCode",
+  "salesCourse": {
+    "code": "string",
+    "name": "string"
+  },
+  "warehouseUuid": "{{warehouseUuid}}",
+  "warehouseCode": "warehouseCode",
+  "warehouseName": "warehouseName",
+  "invoiceIssueYn": "N",
+  "vatYn": "Y",
+  "calculateStatus": "ACTIVE",
+  "salesType": "SALE",
+  "orderDate": "2022-11-03",
+  "orderTime": "12:00:00",
+  "orderCreateDate": "",
+  "orderCreateTime": "",
+  "productShortName": "productShortName",
+  "containerQuantity":30,
+  "bottleQuantity": 0,
+  "retailOrderStatus": "RECEIVED",
+  "description": "description",
+  "orderItems": [
+    {
+      "orderItemUuid": "",
+      "productUuid": "{{productUuid}}",
+      "productName": "productName",
+      "productCode": "productCode",
+      "rfidBoxTag": "",
+      "rfidEaTag": "",
+      "volume": "volume",
+      "bottlesInBox": 30,
+      "isContractPrice": true,
+      "profitMarginRate": 10,
+      "containerPrice": {
+        "price": 1000,
+        "vat": 100,
+        "subtotal": 1100
+      },
+      "beverageContainer": {
+        "beverageContainerUuid": "{{beverageContainerUuid}}",
+        "beverageContainerCode": "beverageContainerCode",
+        "beverageContainerName": "beverageContainerName",
+        "sellingContainerDeposit": 30000,
+        "sellingBottleDeposit": 1000
+      },
+      "containerQuantity": 1,
+      "bottleQuantity": 0,
+      "amount": 30000,
+      "vat": 33000,
+      "subtotalAmount": 33000,
+      "containerDeposit": 1100,
+      "bottleDeposit": 0,
+      "totalAmount": 34000
+    }
+  ],
+  "retailOrderChannel": "APP",
+  "retailOrderTelephone": "010-1234-1234",
+  "orderDescription": "orderDescription",
+  "voiceFileId": "voiceFileId"
+}

@@ -1,8 +1,0 @@
-quarkus:
-  datasource:
-    db-kind: mysql
-    username: ${QUARKUS_DATASOURCE_USERNAME:erp_app}
-    password: ${QUARKUS_DATASOURCE_PASSWORD:erp_app_0}
-    jdbc:
-      url: ${QUARKUS_DATASOURCE_URL:jdbc:mysql://localhost:23306/davada_erp_db}
-      max-size: ${QUARKUS_DATASOURCE_MAX_SIZE:10}

@@ -1,0 +1,73 @@
+{
+  "wholesalerCode": "wholesalerCode",
+  "wholesalerName": "wholesalerName",
+  "location": {
+    "roadAddress": "roadAddress",
+    "roadAddressDetails": "roadAddressDetails",
+    "landAddress": "landAddress",
+    "landAddressDetails": "landAddressDetails",
+    "zipCode": "zipCode",
+    "province": "SEOUL",
+    "latitude": 0,
+    "longitude": 0
+  },
+  "businessNumber": "businessNumber",
+  "corporationNumber": "corporationNumber",
+  "uptae": "uptae",
+  "jongmok": "jongmok",
+  "companyType": "PRIVATE",
+  "industryType": "ALCOHOLIC",
+  "companyContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "ceoContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "managerContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "serviceStartDate": "2022-11-01",
+  "serviceMonthlyAmount": 0,
+  "wholesalerStatus": "ACTIVE",
+  "remarks": "string",
+  "van": {
+    "vanCompany": "KSNET",
+    "bankCode": "string",
+    "vanNumber": "string",
+    "vanCredential": "string"
+  },
+  "ars": {
+    "arsMainTelephone": "string",
+    "arsCompany": "LG",
+    "arsId": "string",
+    "password": "string",
+    "callchngStartDate": "",
+    "callchngEndDate": "",
+    "arsMentUse": "N",
+    "ars1_070Telephone": "string",
+    "ars1_070TelephonePassword": "string",
+    "ars1_Telephone": "string"
+  },
+  "mobile": {
+    "availableOrderChannel": "ALL",
+    "smsSendYn": "N",
+    "alarmUseYn": "N",
+    "alarmCycle": "string",
+    "alarmMainTelephone": "string",
+    "alarmSubTelephone": "string",
+    "filterUseYn": "N",
+    "snsFilter": {
+      "filterNormalMsg": "string",
+      "filterExceptionMsg": "string"
+    }
+  }
+}

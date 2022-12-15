@@ -1,0 +1,27 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "supplierUuid": "{{supplierUuid}}",
+  "beverageContainerCode": "beverageContainerCode",
+  "beverageContainerType": "P_BOX",
+  "brewingType": "SOJU",
+  "beverageContainerName": "참이슬 30병",
+  "volume": "volume",
+  "measurement": "measurement",
+  "bottlesInBox": 30,
+  "description": "description",
+  "stockQuantity": 10,
+  "containerDeposit": {
+    "purchaseDeposit": 20000,
+    "sellingDeposit": 30000,
+    "purchaseFees": 300,
+    "returnCallServiceFees": 0,
+    "returnSelfServiceFees": 0
+  },
+  "bottleDeposit": {
+    "purchaseDeposit": 1000,
+    "sellingDeposit": 1000,
+    "purchaseFees": 1000,
+    "returnCallServiceFees": 0,
+    "returnSelfServiceFees": 0
+  }
+}

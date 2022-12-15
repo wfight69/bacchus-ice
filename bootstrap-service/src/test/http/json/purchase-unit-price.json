@@ -1,0 +1,16 @@
+{
+  "productUuid": "{{productUuid}}",
+  "containerPrice": {
+    "price": 30000,
+    "vat": 3000,
+    "subtotal": 33000
+  },
+  "bottlePrice": {
+    "price": 1000,
+    "vat": 1000,
+    "subtotal": 1100
+  },
+  "totalPrice": 34100,
+  "applyStartDate": "2022-01-01",
+  "applyEndDate": "9999-12-31"
+}

@@ -1,0 +1,29 @@
+####
+# This Dockerfile is used in order to build a distroless container that runs the Quarkus application in native (no JVM) mode
+#
+# Before building the container image run:
+#
+# ./mvnw package -Pnative
+#
+# Then, build the image with:
+#
+# docker build -f src/main/docker/Dockerfile.native-micro -t quarkus/bacchus-service .
+#
+# Then run the container using:
+#
+# docker run -i --rm -p 8080:8080 quarkus/bacchus-service
+#
+###
+FROM quay.io/quarkus/quarkus-micro-image:2.0
+WORKDIR /work/
+COPY target/*-runner /work/bacchus-service
+RUN chmod 775 /work /work/bacchus-service \
+  && chown -R 1001 /work \
+  && chmod -R "g+rwX" /work \
+  && chown -R 1001:root /work
+
+EXPOSE 80
+USER 1001
+
+#ARG QUARKUS_PROFILE
+CMD ["./bacchus-service", "-Dquarkus.http.host=0.0.0.0"]

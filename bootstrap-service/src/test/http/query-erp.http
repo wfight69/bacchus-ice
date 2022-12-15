@@ -1,0 +1,23 @@
+### GET wholesalers
+GET http://localhost:8081/api/v1/wholesalers
+#GET http://erp-dev.bacchuserp.com/v1/wholesalers
+
+### GET query/wholesalers
+#GET http://alb-dev-bacchus-service-828467882.ap-northeast-2.elb.amazonaws.com/v1/query/wholesalers
+#GET http://erp-dev.bacchuserp.com/v1/query/wholesalers
+GET http://localhost:8081/api/v1/query/wholesalers
+
+
+
+#### GET query monthly-request-order-count
+#GET http://localhost:8081/v1/query/wholesalers/{{wholesalerUuid}}/monthly-request-order-count/2022-11-01
+#
+#### GET query request-orders
+#GET http://localhost:8081/v1/query/wholesalers/{{wholesalerUuid}}/request-orders
+
+###
+GET http://localhost:8081/v1/query/wholesalers?wholesalerName=string&offset=0&limit=100
+
+###
+
+GET http://13.124.198.189:8081/q/

@@ -1,0 +1,27 @@
+{
+  "productUuid": "{{productUuid}}",
+  "generalProfitMarginRate": 10,
+  "generalContainerPrice": {
+    "price": 30000,
+    "vat": 3000,
+    "subtotal": 33000
+  },
+  "generalBottlePrice": {
+    "bottlePrice": {
+      "price": 1000,
+      "vat": 1000,
+      "subtotal": 1100
+    },
+    "entProfitMarginRate": 20,
+    "entContainerPrice": {
+      "price": 40000,
+      "vat": 4000,
+      "subtotal": 44000
+    },
+    "entBottlePrice": {
+      "price": 1500,
+      "vat": 150,
+      "subtotal": 1650
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "supplierCode": "supplierCode",
+  "supplierName": "supplierName",
+  "businessNumber": "businessNumber",
+  "mobilePhoneNumber": "010-1234-1234",
+  "location": {
+    "roadAddress": "roadAddress",
+    "roadAddressDetails": "roadAddressDetails",
+    "landAddress": "landAddress",
+    "landAddressDetails": "landAddressDetails",
+    "zipCode": "zipCode",
+    "province": "SEOUL",
+    "latitude": 0,
+    "longitude": 0
+  },
+  "companyType": "CORPORATION",
+  "industryType": "ALCOHOLIC",
+  "companyContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "ceoContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "managerContact": {
+    "name": "string",
+    "telephone": "string",
+    "fax": "string",
+    "email": "string"
+  },
+  "uptae": "uptae",
+  "jongmok": "jongmok",
+  "employeeUuid": "{{employeeUuid}}",
+  "substitutionYn": "N",
+  "supplierStatus": "OPEN",
+  "description": "description"
+}

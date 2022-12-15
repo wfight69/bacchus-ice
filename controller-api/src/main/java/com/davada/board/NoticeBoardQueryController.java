@@ -5,7 +5,6 @@ import com.davada.application.common.CommonResponse;
 import com.davada.application.common.ErrorCode;
 import com.davada.domain.board.condition.NoticeBoardCondition;
 
-import com.davada.domain.purchase.vo.PurchaseType;
 import io.smallrye.mutiny.Uni;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -64,8 +63,6 @@ public class NoticeBoardQueryController {
         int offset = 0;
         @QueryParam("limit")
         int limit = 30;
-        @QueryParam("purchaseType")
-        PurchaseType purchaseType;
         @QueryParam("employeeName")
         String employeeName;
         @QueryParam("mainText")

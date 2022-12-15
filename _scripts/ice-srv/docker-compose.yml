@@ -7,9 +7,9 @@ services:
     networks:
       - ice-network
     ports:
-      - "23306:3306"
+      - "23307:3306"
     environment:
-      - MYSQL_DATABASE=davada_ice_db
+      - MYSQL_DATABASE=bacchus_ice_db
       - MYSQL_ROOT_PASSWORD=root123456
       - TZ=Asia/Seoul
     command:
@@ -20,36 +20,8 @@ services:
       - ice-mysql-data:/var/lib/mysql
       - "./init.sql:/docker-entrypoint-initdb.d/init.sql"
 
-  ice-redpanda:
-    #image: docker.vectorized.io/vectorized/redpanda:v22.2.4-arm64
-    image: docker.vectorized.io/vectorized/redpanda:latest
-    restart: always
-    container_name: redpanda-1
-    networks:
-      - ice-network
-    ports:
-      - "9092:9092"
-      - "29092:29092"
-    command:
-      - redpanda
-      - start
-      - --smp
-      - '1'
-      - --reserve-memory
-      - 0M
-      - --ovicerovisioned
-      - --node-id
-      - '0'
-      - --kafka-addr
-      - PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
-      - --advertise-kafka-addr
-      - PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
-    volumes:
-      - redpanda1_data:/var/lib/redpanda/data
-
 volumes:
   ice-mysql-data:
-  redpanda1_data:
 
 networks:
   ice-network:

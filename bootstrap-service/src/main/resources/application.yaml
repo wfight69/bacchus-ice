@@ -1,0 +1,8 @@
+quarkus:
+  datasource:
+    db-kind: mysql
+    username: ${QUARKUS_DATASOURCE_USERNAME:ice_app}
+    password: ${QUARKUS_DATASOURCE_PASSWORD:ice_app_0}
+    jdbc:
+      url: ${QUARKUS_DATASOURCE_URL:jdbc:mysql://localhost:23307/bacchus_ice_db}
+      max-size: ${QUARKUS_DATASOURCE_MAX_SIZE:10}

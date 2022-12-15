@@ -1,0 +1,51 @@
+{
+  "wholesalerUuid": "{{wholesalerUuid}}",
+  "erpUser": {
+    "erpUserUuid": "string",
+    "wholesalerUuid": "{{wholesalerUuid}}",
+    "erpUserLoginId": "bacchus-user",
+    "password": "11111",
+    "userRole": "ADMIN",
+    "systemLogin": "Y"
+  },
+  "employeeCode": "employeeCode",
+  "employeeName": "employeeName",
+  "salesCourse": {
+    "code": "string",
+    "name": "string"
+  },
+  "carNumber": "string",
+  "officeDuty": "SALES",
+  "occupationalCategory": "WHOLESALE_RETAIL",
+  "officePosition": "CHAIRMAN",
+  "department": {
+    "code": "string",
+    "name": "string"
+  },
+  "description": "string",
+  "employmentPeriod": {
+    "entryDate": "2022-01-01",
+    "leavingDate": null,
+    "resignYn": "N"
+  },
+  "personalDetails": {
+    "mobilePhone": "string",
+    "homeTelephone": "string",
+    "email": "string",
+    "address": "string",
+    "addressDetails": "string",
+    "zipCode": "string",
+    "gender": "MALE",
+    "foreignerYn": "string"
+  },
+  "vanTerm": {
+    "smsSendYn": "Y",
+    "filterUseYn": "N",
+    "fcmDeviceToken": "string",
+    "vanDeviceSerialNo": "string",
+    "vanTermNo": "string",
+    "vanTermSerialNo": "string",
+    "vanTermCertKey": "string",
+    "vanTermNtsCertKey": "string"
+  }
+}
