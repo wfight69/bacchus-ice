@@ -6,6 +6,7 @@ import com.davada.application.wholesaler.service.port.WholesalerQueryUseCase;
 import com.davada.domain.common.vo.IndustryType;
 import com.davada.domain.wholesaler.condition.WholesalerCondition;
 import com.davada.domain.wholesaler.vo.Province;
+import com.davada.wholesaler.service.WholesalerQueryDtoService;
 import io.smallrye.mutiny.Uni;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

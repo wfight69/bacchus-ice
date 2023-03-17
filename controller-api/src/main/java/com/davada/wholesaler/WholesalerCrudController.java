@@ -2,10 +2,15 @@ package com.davada.wholesaler;
 
 import com.davada.application.common.CommonResponse;
 import com.davada.application.common.ErrorCode;
+import com.davada.application.wholesaler.service.WholesalerQueryService;
 import com.davada.application.wholesaler.service.port.WholesalerCrudUseCase;
 import com.davada.domain.common.NameValuePairs;
+import com.davada.domain.common.vo.IndustryType;
 import com.davada.domain.wholesaler.entity.Wholesaler;
+import com.davada.domain.wholesaler.vo.Province;
+import com.davada.wholesaler.service.WholesalerQueryDtoService;
 import io.smallrye.mutiny.Uni;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.microprofile.openapi.annotations.Operation;
@@ -13,6 +18,7 @@ import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 import org.jboss.resteasy.reactive.RestQuery;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -29,7 +35,9 @@ import javax.ws.rs.core.Response;
 public class WholesalerCrudController {
     //
     private final WholesalerCrudUseCase wholesalerCrudUseCase;
-
+    //
+    private final WholesalerQueryDtoService wholesalerQueryDtoService;
+    //
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
@@ -115,5 +123,31 @@ public class WholesalerCrudController {
                 .onItem()
                 .transform(Response.ResponseBuilder::build);
 
+    }
+
+    @GET
+    @Path("/all")
+    @Transactional(value = Transactional.TxType.SUPPORTS)
+    @Operation(operationId = "retrieveAllDtoWholesaler", description = "retrieve all Dto Wholesaler")
+    public Uni<Response> retrieveAllDtoWholesaler( @BeanParam WholesalerQueryController.ParameterBean parameterBean) {
+        log.debug("retrieveAllDtoWholesaler wholesalerUuid : ");
+        return Uni.createFrom()
+                .item(wholesalerQueryDtoService.retrieveAllDtoWholesaler(parameterBean.getWholesalerCode(), parameterBean.getOffset(), parameterBean.getLimit()))
+                .onItem()
+                .transform(f -> f != null ? Response.ok(CommonResponse.success(f)) : Response.ok(CommonResponse.fail(ErrorCode.COMMON_SYSTEM_ERROR)))
+                .onItem()
+                .transform(Response.ResponseBuilder::build);
+    }
+
+    @Data
+    static class ParameterBean {
+        @QueryParam("offset")
+        int offset = 0;
+        @QueryParam("limit")
+        int limit = 30;
+        @QueryParam("wholesalerCode")
+        String wholesalerCode;
+        @QueryParam("wholesalerName")
+        String wholesalerName;
     }
 }
