@@ -2,8 +2,6 @@ package com.davada.dto.wholesaler;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-
 @Getter
 @Setter
 @AllArgsConstructor

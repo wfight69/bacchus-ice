@@ -132,7 +132,7 @@ public class WholesalerCrudController {
     public Uni<Response> retrieveAllDtoWholesaler( @BeanParam WholesalerQueryController.ParameterBean parameterBean) {
         log.debug("retrieveAllDtoWholesaler wholesalerUuid : ");
         return Uni.createFrom()
-                .item(wholesalerQueryDtoService.retrieveAllDtoWholesaler(parameterBean.getWholesalerCode(), parameterBean.getOffset(), parameterBean.getLimit()))
+                .item(wholesalerQueryDtoService.retrieveAllDtoWholesaler(parameterBean.getWholesalerCode(), parameterBean.getWholesalerName(), parameterBean.getOffset(), parameterBean.getLimit()))
                 .onItem()
                 .transform(f -> f != null ? Response.ok(CommonResponse.success(f)) : Response.ok(CommonResponse.fail(ErrorCode.COMMON_SYSTEM_ERROR)))
                 .onItem()
