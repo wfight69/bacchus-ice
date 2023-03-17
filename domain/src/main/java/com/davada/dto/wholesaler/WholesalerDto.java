@@ -17,4 +17,10 @@ public class WholesalerDto {
     String wholesalerCode;
     // 업체명
     String wholesalerName;
+    // 사업자번호
+    String businessNumber;
+    // 업태
+    String uptae;
+    // 종목
+    String jongmok;
 }
