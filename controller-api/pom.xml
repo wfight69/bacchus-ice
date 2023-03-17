@@ -23,6 +23,7 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
         </dependency>
+
     </dependencies>
 
 </project>
