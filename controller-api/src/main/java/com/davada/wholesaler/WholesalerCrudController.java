@@ -9,6 +9,8 @@ import com.davada.domain.common.vo.IndustryType;
 import com.davada.domain.wholesaler.entity.Wholesaler;
 import com.davada.domain.wholesaler.vo.Province;
 import com.davada.wholesaler.service.WholesalerQueryDtoService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.smallrye.mutiny.Uni;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -134,7 +136,14 @@ public class WholesalerCrudController {
         return Uni.createFrom()
                 .item(wholesalerQueryDtoService.retrieveAllDtoWholesaler(parameterBean.getWholesalerCode(), parameterBean.getWholesalerName(), parameterBean.getOffset(), parameterBean.getLimit()))
                 .onItem()
-                .transform(f -> f != null ? Response.ok(CommonResponse.success(f)) : Response.ok(CommonResponse.fail(ErrorCode.COMMON_SYSTEM_ERROR)))
+                .transform(f -> {
+                    if (f != null) {
+                         Response.ResponseBuilder ok = Response.ok(CommonResponse.success(f));
+                        return ok;
+                    } else {
+                        return Response.ok(CommonResponse.fail(ErrorCode.COMMON_SYSTEM_ERROR));
+                    }
+                 })
                 .onItem()
                 .transform(Response.ResponseBuilder::build);
     }
